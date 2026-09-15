@@ -1,7 +1,7 @@
 <div align="center">
 
 # Telegram Rubika Account Panel
-# 📱🤖
+# 📱🤖📱
 
 ### A Telegram Control Panel for a Rubika User Account
 
