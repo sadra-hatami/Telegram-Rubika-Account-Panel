@@ -63,7 +63,7 @@ When you tap a button in Telegram, `sender.py` translates that action into a `ru
 
 This repository is not a Rubika group-management bot. The group bots in this profile use the `rubka` library. This panel uses `rubpy` and a user session.
 
-> **Tagline:** *A Telegram control panel for managing a Rubika user account with the rubpy library.*
+> **Tagline:** *A Telegram bot panel, built with Pyrogram and rubpy, that controls a Rubika user account instead of a group bot.*
 
 ---
 
