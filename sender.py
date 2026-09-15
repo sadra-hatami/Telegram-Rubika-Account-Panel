@@ -1032,9 +1032,3 @@ async def handle_file(Bot, message):
   
 print("Run")
 Bot.run()
-
-
-
-
-
-
