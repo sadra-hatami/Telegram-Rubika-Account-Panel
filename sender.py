@@ -18,7 +18,7 @@ def NewAl(num, num2,num3):
     random_numbers = [str(num) + ''.join([str(random.randint(0, 9)) for _ in range(num3)]) for _ in range(num2)]
     return '\n'.join(random_numbers)
 def Persian():
-    persian_alphabet = 'ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی'
+    persian_alphabet = ''
     random_letters = ''.join(random.choice(persian_alphabet) for _ in range(5))
     return random_letters
 
@@ -56,7 +56,7 @@ def lichNumber(num):
     return "\n".join([num + str(random.randint(1000000, 9999999)) for i in range(10000)])
   
 proxy = None
-Owner=[5394456754] # ایدی عددی بزار
+Owner=[] # ایدی عددی بزار
 token="توکن بزار"
 
 Bot=Client("CreateBot",api_id=15567484,in_memory=True,api_hash="9cee14fbc3ea1fefd4bbb4fd4e2daa6d",bot_token=token,proxy=proxy)
