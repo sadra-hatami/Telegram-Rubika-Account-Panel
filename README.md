@@ -1,7 +1,7 @@
 <div align="center">
 
 # Telegram Rubika Account Panel
-# 📱🤖📱
+# 📱🤖
 
 ### A Telegram Control Panel for a Rubika User Account
 
@@ -21,7 +21,12 @@ A Python panel that receives commands in Telegram and applies them to a Rubika u
 [![AsyncIO](https://img.shields.io/badge/AsyncIO-Asynchronous-2C3E50?style=for-the-badge&logo=python&logoColor=white)](https://docs.python.org/3/library/asyncio.html)
 [![Persian](https://img.shields.io/badge/Language-Persian-success?style=for-the-badge)](https://en.wikipedia.org/wiki/Persian_language)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
-![GitHub](https://img.shields.io/badge/Open_Source-Project-black?style=for-the-badge&logo=github)
+
+<br>
+
+[🌐 GitHub Profile](https://github.com/sadra-hatami)
+•
+[📧 Email](mailto:sadra.hatami.1732@gmail.com)
 
 </div>
 
@@ -30,20 +35,20 @@ A Python panel that receives commands in Telegram and applies them to a Rubika u
 # 📑 Table of Contents
 
 - [About](#-about)
-- [Why This Project?](#-why-this-project)
+- [What This Project Is For](#-what-this-project-is-for)
+- [Related Repositories](#-related-repositories)
 - [How It Works](#-how-it-works)
-- [What Each Side Does](#-what-each-side-does)
 - [Project Structure](#-project-structure)
 - [Main File](#-main-file)
 - [The rubpy Folder](#-the-rubpy-folder)
 - [Technologies](#️-technologies)
-- [Usage](#️-usage)
+- [Installation](#-installation)
 - [Configuration](#️-configuration)
+- [Usage](#️-usage)
 - [Target Audience](#-target-audience)
 - [Limitations](#-limitations)
+- [FAQ](#-faq)
 - [Security Notes](#-security-notes)
-- [Related Repositories](#-related-repositories)
-- [FAQ](#-frequently-asked-questions)
 - [Contributing](#-contributing)
 - [Contact](#-contact)
 - [License](#-license)
@@ -54,28 +59,49 @@ A Python panel that receives commands in Telegram and applies them to a Rubika u
 
 # 📖 About
 
-**Telegram Rubika Account Panel** is a two-part Python project.
+**Telegram Rubika Account Panel** is a Telegram-based control panel for a Rubika **user account**.
 
-The first part is a Telegram bot written with **Pyrogram**. That bot is the control panel: you open it in Telegram, press buttons, and send replies.
+You talk to a Telegram bot built with **Pyrogram**. That bot then uses the bundled **rubpy** library to act on a Rubika account, such as reading account information or updating profile fields.
 
-The second part is a Rubika **user-account** client written with **rubpy**. That client logs into a Rubika account the same way a normal app user would, not the way a group bot logs in with a bot token.
+This repository is **not** a Rubika group bot. It does not join a group with a Rubika bot token and it does not lock group messages.
 
-When you tap a button in Telegram, `sender.py` translates that action into a `rubpy.Client` call. The result comes back to the same Telegram chat.
-
-This repository is not a Rubika group-management bot. The group bots in this profile use the `rubka` library. This panel uses `rubpy` and a user session.
-
-> **Tagline:** *A Telegram bot panel, built with Pyrogram and rubpy, that controls a Rubika user account instead of a group bot.*
+> **Tagline:** *A Telegram control panel for managing a Rubika user account with the rubpy library.*
 
 ---
 
-# 🚀 Why This Project?
+# 🎯 What This Project Is For
 
-Rubika bots and Rubika user clients are easy to mix up.
+Use this project when you want a **remote control in Telegram** for an account you own on Rubika.
 
-- A **group bot** joins a group with a token and manages that group.
-- A **user client** signs into a personal account and can see that account's profile, chats, and contacts.
+It is for:
 
-This project exists to keep a Telegram-based control layer on top of a user client. The Telegram bot is only the remote control. The actual Rubika work happens inside `rubpy`.
+- Sending panel commands from Telegram
+- Connecting that panel to a Rubika user session through `rubpy`
+- Studying the difference between a user client and a group bot
+
+It is **not** for:
+
+- Managing a Rubika group
+- Locking links, photos, or voice in a group
+- Running AI, games, XP, or group reports
+
+Those group features live in the other two repositories below.
+
+---
+
+# 🔗 Related Repositories
+
+These three projects are related, but they are not the same thing.
+
+| Repository | What it is | Library | Where it works |
+|------------|------------|---------|----------------|
+| **[Telegram Rubika Account Panel](https://github.com/sadra-hatami/Telegram-Rubika-Account-Panel)** | Telegram panel for a Rubika user account (this repo) | Pyrogram + `rubpy` | Telegram → user account |
+| **[Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot)** | Simple group lock bot | `rubka` | Rubika groups |
+| **[Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot)** | Much more advanced group platform: locks, AI, games, XP, automation, SQLite | `rubka` | Rubika groups |
+
+If you need a small group lock bot, use [Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot).  
+If you need the much more advanced group bot, use [Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot).  
+If you need Telegram control over a Rubika user account, stay on this repository.
 
 ---
 
@@ -90,25 +116,12 @@ You
 ```
 
 1. `sender.py` starts a Telegram bot.
-2. Only the configured owner can use the panel.
-3. A callback button or a reply message chooses an action.
-4. The script opens `async with rubpy.Client(session_name)`.
-5. rubpy sends the request to Rubika and returns the result.
-6. The Telegram bot shows a short status message.
+2. The owner presses a button or sends a reply.
+3. The script opens `rubpy.Client`.
+4. rubpy applies the action to the Rubika user account.
+5. The Telegram bot shows the result.
 
-The bundled `rubpy` package talks to Rubika infrastructure such as `web.rubika.ir`. It is a third-party user client, not the official Rubika bot API.
-
----
-
-# 🔀 What Each Side Does
-
-| Side | Library | Account type | Role |
-|------|---------|--------------|------|
-| Telegram panel | Pyrogram | Telegram bot token | Buttons, questions, status messages |
-| Rubika account | rubpy | User session | Profile and account actions |
-| Group bots in this profile | rubka | Rubika bot token | Group locks and moderation |
-
-If you need group locks, use [Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot) or [Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot). Those projects are separate.
+The Telegram bot is only the remote control. The Rubika work happens inside `rubpy`.
 
 ---
 
@@ -118,64 +131,40 @@ If you need group locks, use [Rubika Group Bot](https://github.com/sadra-hatami/
 Telegram-Rubika-Account-Panel/
 ├── sender.py
 └── rubpy/
-    ├── __init__.py          # exports Client, Message, handlers
-    ├── client.py            # main async Rubika client
-    ├── emoji.py
-    ├── crypto/              # request encryption
-    ├── gadgets/             # helpers, methods, errors
-    ├── network/             # connection and proxy helpers
-    ├── sessions/            # saved login sessions
-    ├── structs/             # message and result models
-    └── sync/                # non-async copy of the same client
+    ├── __init__.py
+    ├── client.py
+    ├── crypto/
+    ├── gadgets/
+    ├── network/
+    ├── sessions/
+    ├── structs/
+    └── sync/
 ```
 
-`sender.py` is the panel.  
-`rubpy/` is the engine.
+- `sender.py` — Telegram panel
+- `rubpy/` — bundled Rubika user-client library
 
 ---
 
 # 📄 Main File
 
-`sender.py` is the only application file.
+`sender.py` creates the Telegram bot, asks the owner for input when needed, and calls `rubpy.Client`.
 
-It does three jobs:
-
-1. **Creates the Telegram bot** with Pyrogram (`Client`, callback buttons, owner filter).
-2. **Asks the operator for input** with `Bot.ask(...)` when a field is needed, such as a new first name or bio.
-3. **Calls rubpy** inside `async with rubpy.Client(name)` to apply the change on the Rubika account.
-
-Typical panel actions in the current script:
+Typical panel actions:
 
 - Show basic account information
 - Edit first name, last name, and bio
 - Work with a saved Rubika session name
-- Receive a document in Telegram and store it locally
 
-The Telegram token in the public file is a placeholder (`توکن بزار`). Replace it through environment variables. Do not commit a real token.
+The public token field should stay a placeholder. Put the real Telegram bot token in environment variables.
 
 ---
 
 # 📦 The rubpy Folder
 
-`rubpy` is a vendored third-party library (version `6.4.7` in `__init__.py`).
+`rubpy` is a third-party user-account library (version `6.4.7` in this repo). It is included next to `sender.py` so the panel can import it without a separate install.
 
-It is included next to `sender.py` so the panel can run with:
-
-```python
-import rubpy
-async with rubpy.Client(name) as app:
-    ...
-```
-
-Important pieces:
-
-- `Client` — login and API calls
-- `sessions/` — how a login is stored after the first sign-in
-- `network/` — connection details
-- `crypto/` — request protection
-- `sync/` — the same client without asyncio
-
-This folder is not a Rubika group-bot SDK. It is a user-account SDK.
+This is not the `rubka` library used by the group bots.
 
 ---
 
@@ -186,11 +175,9 @@ This folder is not a Rubika group-bot SDK. It is a user-account SDK.
 - rubpy 6.4.7 (bundled)
 - asyncio
 
-No web server and no database are required for the panel itself. rubpy may create local session files after login.
-
 ---
 
-# ▶️ Usage
+# 🚀 Installation
 
 ```bash
 git clone https://github.com/sadra-hatami/Telegram-Rubika-Account-Panel.git
@@ -198,21 +185,13 @@ cd Telegram-Rubika-Account-Panel
 pip install pyrogram tgcrypto
 ```
 
-Set secrets first, then start the panel:
-
 ```bash
 python sender.py
 ```
 
-Open the Telegram bot as the owner account and use the on-screen buttons.
-
-Use this only with a Rubika account you own.
-
 ---
 
 # ⚙️ Configuration
-
-Keep secrets outside the repository:
 
 ```python
 import os
@@ -222,7 +201,7 @@ api_hash = os.environ["TELEGRAM_API_HASH"]
 token = os.environ["TELEGRAM_BOT_TOKEN"]
 ```
 
-Also ignore local files that must never be committed:
+Ignore local secrets:
 
 ```text
 .env
@@ -234,20 +213,53 @@ __pycache__/
 
 ---
 
+# ▶️ Usage
+
+1. Set Telegram API values and the bot token.
+2. Run `sender.py`.
+3. Open the Telegram bot as the owner.
+4. Use the panel only with a Rubika account you own.
+
+---
+
 # 🎓 Target Audience
 
-- Developers who want to see a Telegram bot driving another Python client
-- Learners comparing `rubka` group bots with `rubpy` user clients
-- Maintainers cleaning and documenting this panel
+- Developers comparing a user-account client with a group bot
+- People who want a Telegram remote control for their own Rubika account
+- Maintainers documenting this panel next to the two group bots
 
 ---
 
 # ⚠️ Limitations
 
-- The panel is a single script, not a packaged app.
+- This is a single-script panel, not a group-management platform.
 - Rubika login depends on a valid user session.
-- Some strings in `sender.py` are leftovers from older edits and should be removed.
-- Features that touch other people's accounts, bulk sending, or third-party lookup APIs should not be used.
+- Leftover third-party strings in `sender.py` should be removed before a public release.
+- Use it only on accounts you control.
+
+---
+
+# ❓ FAQ
+
+### Is this a group bot?
+
+No. Group bots use `rubka` and a Rubika bot token. This panel uses Telegram + `rubpy` and a user session.
+
+### Where is the simple group bot?
+
+[Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot)
+
+### Where is the advanced group bot?
+
+[Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot)
+
+### Can I use this instead of adding a bot to a group?
+
+No. This project does not replace group locks, games, AI, or group reports.
+
+### Why is `rubpy` inside the repo?
+
+So `sender.py` can import the user client without installing that package separately.
 
 ---
 
@@ -256,41 +268,13 @@ __pycache__/
 - Never commit a real Telegram bot token.
 - Never commit Rubika session files.
 - Move `api_id` and `api_hash` to environment variables.
-- Remove leftover third-party usernames and external API URLs.
-- Do not share this panel with people who should not control the target account.
-
----
-
-# 🔗 Related Repositories
-
-- [Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot) — small group lock bot
-- [Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot) — full group platform
-
----
-
-# ❓ Frequently Asked Questions
-
-### Is this a Rubika group bot?
-
-No. A group bot uses a Rubika bot token and the `rubka` library. This project controls a user account from Telegram.
-
-### Why is the `rubpy` folder inside the repo?
-
-So `sender.py` can import the client without installing the package separately.
-
-### Can I use it without Telegram?
-
-Not in the current design. Telegram is the remote control. rubpy is the account client.
-
-### Does it need a server?
-
-Only a machine that can run Python and stay online while you use the panel.
+- Remove leftover usernames and external API URLs from `sender.py`.
 
 ---
 
 # 🤝 Contributing
 
-Cleanup pull requests are welcome, especially for secret handling, unused functions, and leftover third-party strings.
+Cleanup pull requests are welcome, especially for secret handling and unused leftover code.
 
 ---
 
@@ -324,12 +308,12 @@ The bundled `rubpy` package is third-party code and keeps its original authorshi
 
 # ⭐ Support
 
-If this repository helped you understand the difference between a Rubika group bot and a user-account client, please consider giving it a ⭐ on GitHub.
+If this repository helped you understand the difference between a group bot and a user-account panel, please consider giving it a ⭐ on GitHub.
 
 ---
 
 <div align="center">
 
-## Designed & developed with ❤️ for the developer community of Iran and the world by **Sadra Hatami**
+## Designed & Developed with ❤️ for the developer community of Iran and the world by **Sadra Hatami**
 
 </div>
