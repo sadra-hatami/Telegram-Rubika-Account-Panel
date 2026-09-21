@@ -94,11 +94,12 @@ Those group features live in the other two repositories below.
 
 These three projects are related, but they are not the same thing.
 
-| Repository | What it is | Library | Where it works |
-|------------|------------|---------|----------------|
-| **[Telegram Rubika Account Panel](https://github.com/sadra-hatami/Telegram-Rubika-Account-Panel)** | Telegram panel for a Rubika user account (this repo) | Pyrogram + `rubpy` | Telegram → user account |
-| **[Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot)** | Simple group lock bot | `rubka` | Rubika groups |
-| **[Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot)** | Much more advanced group platform: locks, AI, games, XP, automation, SQLite | `rubka` | Rubika groups |
+| Repository | Role |
+|------------|------|
+| **[Countries War Bot](https://github.com/sadra-hatami/Countries-War-Bot)** | Nation strategy game (this repo) |
+| **[Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot)** | Lightweight group lock bot |
+| **[Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot)** | Full group management, automation, and extra tools |
+| **[Telegram Rubika Account Panel](https://github.com/sadra-hatami/Telegram-Rubika-Account-Panel)** | Telegram panel for a Rubika user account |
 
 If you need a small group lock bot, use [Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot).  
 If you need the much more advanced group bot, use [Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot).  
