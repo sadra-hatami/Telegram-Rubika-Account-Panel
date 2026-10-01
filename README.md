@@ -49,7 +49,6 @@ A Python panel that receives commands in Telegram and applies them to a Rubika u
 - [Target Audience](#-target-audience)
 - [Limitations](#-limitations)
 - [FAQ](#-faq)
-- [Security Notes](#-security-notes)
 - [Contributing](#-contributing)
 - [Contact](#-contact)
 - [License](#-license)
@@ -96,14 +95,16 @@ These three projects are related, but they are not the same thing.
 
 | Repository | Role |
 |------------|------|
-| **[Countries War Bot](https://github.com/sadra-hatami/Countries-War-Bot)** | Nation strategy game |
-| **[Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot)** | Lightweight group lock bot |
-| **[Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot)** | Full group management, automation, and extra tools |
+| **[World War Bot](https://github.com/sadra-hatami/World-War-Bot)** | World strategy game |
+| **[Countries War Bot](https://github.com/sadra-hatami/Countries-War-Bot)** | Earlier nation strategy game |
+| **[Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot)** | Complete group platform |
+| **[Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot)** | Newest, larger group platform |
 | **[Telegram Rubika Account Panel](https://github.com/sadra-hatami/Telegram-Rubika-Account-Panel)** | Telegram panel for a Rubika user account (this repo) |
 
-If you need a small group lock bot, use [Rubika Group Bot](https://github.com/sadra-hatami/Rubika-Group-Bot).  
-If you need the much more advanced group bot, use [Rubika Advanced Group Bot](https://github.com/sadra-hatami/Rubika-Advanced-Group-Bot).  
-If you need Telegram control over a Rubika user account, stay on this repository.
+Use **World War Bot** for the world strategy game.  
+Use **Countries War Bot** for the earlier country game.  
+Use the group bots for moderation and automation.  
+Use the **Account Panel** only to control a user account from Telegram.
 
 ---
 
@@ -262,15 +263,6 @@ No. This project does not replace group locks, games, AI, or group reports.
 ### Why is `rubpy` inside the repo?
 
 So `sender.py` can import the user client without installing that package separately.
-
----
-
-# 🔐 Security Notes
-
-- Never commit a real Telegram bot token.
-- Never commit Rubika session files.
-- Move `api_id` and `api_hash` to environment variables.
-- Remove leftover usernames and external API URLs from `sender.py`.
 
 ---
 
